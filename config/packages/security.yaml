@@ -21,13 +21,18 @@ security:
                 check_path: /api/login_check
                 success_handler: lexik_jwt_authentication.handler.authentication_success
                 failure_handler: lexik_jwt_authentication.handler.authentication_failure
+        refresh_token:
+            pattern: ^/api/token
+            stateless: true
+            refresh_jwt:
+                check_path: gesdinet_jwt_refresh_token
         api:
             pattern:   ^/api
             stateless: true
             jwt: ~
 
     access_control:
-        - { path: ^/api/login, roles: PUBLIC_ACCESS }
+        - { path: ^/api/(login|refresh), roles: PUBLIC_ACCESS }
         - { path: ^/api, roles: IS_AUTHENTICATED_FULLY }
 
 when@test:
