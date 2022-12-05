@@ -1,2 +1,15 @@
 gesdinet_jwt_refresh_token:
-    refresh_token_class: App\Entity\RefreshToken
+    refresh_token_class: App\Entity\RefreshToken # Scaffolded by the bundle recipe
+    ttl: 7200 # 2h in seconds
+    single_use: true
+
+    # Use cookies for the refresh token
+    cookie:
+        enabled: true
+        remove_token_from_body: true
+        # Cookie parameters
+        http_only: true
+        same_site: strict
+        secure: true
+        path: /api/token
+        domain: null
