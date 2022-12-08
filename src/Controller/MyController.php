@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class MyController extends AbstractController
 {
-    #[Route('/secure', name: 'secure')]
+    #[Route('/api/secure', name: 'secure')]
     public function getSecureInfos(): Response
     {
       return new JsonResponse(['message' => 'You have access to this restricted area!']);
